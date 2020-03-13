@@ -13,8 +13,7 @@ class NoticiaView(APIView):
         return Response({"noticias": serializers.data})
 
     def post(self, request):
-        noticia = request.data.get("noticia")
-
+        noticia = request.data
         serializer = NoticiaSerializer(data=noticia)
         if serializer.is_valid(raise_exception=True):
             noticia_salva = serializer.save()

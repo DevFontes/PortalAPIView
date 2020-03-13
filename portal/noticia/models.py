@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Autor(models.Model):
-    nome = models.CharField(max_length=255)
+    nome = models.CharField(max_length=70)
     email = models.EmailField()
 
     def __str__(self):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Noticia
+from .models import Noticia, Autor
 
 
 class NoticiaSerializer(serializers.Serializer):
@@ -15,6 +15,5 @@ class NoticiaSerializer(serializers.Serializer):
         instance.titulo = validate_data.get("titulo", instance.titulo)
         instance.texto = validate_data.get("texto", instance.texto)
         instance.autor_id = validate_data.get("autor_id", instance.autor_id)
-
         instance.save()
         return instance
