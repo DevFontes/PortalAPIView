@@ -8,7 +8,7 @@ class NoticiaSerializer(serializers.Serializer):
     texto = serializers.CharField()
     autor_id = serializers.IntegerField()
 
-    def create(self, validate_data):
+    def create(self, validated_data):
         return Noticia.objects.create(**validated_data)
 
     def update(self, instance, validate_data):
