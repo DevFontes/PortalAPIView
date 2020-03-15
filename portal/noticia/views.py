@@ -22,14 +22,12 @@ class NoticiaView(APIView):
         )
 
     def put(self, request, pk):
-        noticia_salva = get_object_or_404(Noticia.objects.all(), pk=pk)
-        data = request.get("noticia")
-        serializer = NoticiaSerializer(instance=noticia_salva, data=data, partial=True)
+        noticia = get_object_or_404(Noticia.objects.all(), pk=pk)
+        data = request.data
+        serializer = NoticiaSerializer(instance=noticia, data=data, partial=True)
         if serializer.is_valid(raise_exception=True):
-            noticia_salva = serializer.save()
-        return Response(
-            {"Noticia '{}' atualizada com sucesso.".format(noticia_salva.titulo)}
-        )
+            noticia = serializer.save()
+        return Response({"Noticia '{}' atualizada com sucesso.".format(noticia.titulo)})
 
     def delete(self, request, pk):
         noticia = get_object_or_404(Noticia.objects.all(), pk=pk)

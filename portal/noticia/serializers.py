@@ -12,8 +12,8 @@ class NoticiaSerializer(serializers.Serializer):
         return Noticia.objects.create(**validated_data)
 
     def update(self, instance, validate_data):
-        instance.titulo = validate_data.get("titulo", instance.titulo)
-        instance.texto = validate_data.get("texto", instance.texto)
-        instance.autor_id = validate_data.get("autor_id", instance.autor_id)
+        instance.titulo = validate_data("titulo", instance.titulo)
+        instance.texto = validate_data("texto", instance.texto)
+        instance.autor_id = validate_data("autor_id", instance.autor_id)
         instance.save()
         return instance
